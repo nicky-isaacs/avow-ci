@@ -7,6 +7,7 @@
     <meta name="description" content="Avow-ci : Simple. Open. Continuous Integration." />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/cxx" media="screen" href="stylesheets/jquery.bxslider.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <title>Avow-CI</title>
@@ -35,10 +36,19 @@
 <h1>
 <a name="simple-open-continuous-integration" class="anchor" href="#simple-open-continuous-integration"><span class="octicon octicon-link"></span></a>Simple. Open. Continuous Integration.</h1>
 
-<p><img align="right" src="avow-demo.gif" style="margin: 5px 0 10px 20px; border: 2px solid #ccc; border-radius: 3px"></p>
+<!--<p><img align="right" src="avow-demo.gif" style="margin: 5px 0 10px 20px; border: 2px solid #ccc; border-radius: 3px"></p>-->
 
 <p>A simple yet powerful open-source CI system for individual developers, small teams
 and dev shops, specifically designed for JavaScript projects.</p>
+
+<ul class="bxslider">
+  <li><img src="images/sliders/1.login.png"></li>
+  <li><img src="images/sliders/2.list.png"></li>
+  <li><img src="images/sliders/3.project.png"></li>
+  <li><img src="images/sliders/4.config.png"></li>
+  <li><img src="images/sliders/5.build.png"></li>
+  <li><img src="images/sliders/6.log.png"></li>
+</ul>
 
 <p>Avow is built for customization - creating continuous integration (and deployment)
 that fits your specific need. It's easy to hack on and makes it simple to crete
@@ -216,16 +226,20 @@ webhook <code>POST</code>'s and execute a build.</p>
       </footer>
     </div>
 
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-49700564-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+        <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-49700564-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="javascripts/jquery.bxslider.min.js"></script>
+    <script src="javascripts/main.js"></script>
 
 
   </body>
