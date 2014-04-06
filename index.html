@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Avow-ci : Simple. Open. Continuous Integration." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Avow-ci</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Fluidbyte/avow-ci">View on GitHub</a>
+
+          <h1 id="project_title">Avow-ci</h1>
+          <h2 id="project_tagline">Simple. Open. Continuous Integration.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Fluidbyte/avow-ci/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Fluidbyte/avow-ci/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><img src="public/assets/images/avow-bar.png" width="100%"></p>
+
+<h3>
+<a name="simple-open-continuous-integration" class="anchor" href="#simple-open-continuous-integration"><span class="octicon octicon-link"></span></a>Simple. Open. Continuous Integration.</h3>
+
+<p><img align="right" src="avow-demo.gif"></p>
+
+<p>A simple yet powerful open-source CI system for individual developers, small teams
+and dev shops, specifically designed for JavaScript projects.</p>
+
+<p>Avow is built for customization - creating continuous integration (and deployment)
+that fits your specific need. It's easy to hack on and makes it simple to crete
+solutions that fit your needs.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>
+<a href="http://nodejs.org">NodeJS</a> v.0.9.0 (or better)</li>
+<li>
+<a href="http://www.mongodb.com/">MongoDB</a> locally or via a service such as <a href="http://mongolab.com">MongoLab</a>
+</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>1.) After cloning or downloading the contents of the Avow system to your server run
+<code>npm install</code> to get all dependencies.</p>
+
+<p>*Note: If you're planning to run in dev mode (i.e. <code>node index.js</code>) you need to
+additionally run <code>npm install grunt-cli -g</code>.</p>
+
+<p>2.) In the root of the directory create a file <code>db_conf.json</code>:</p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+  <span class="nt">"adapter"</span><span class="p">:</span> <span class="s2">"mongo"</span><span class="p">,</span>
+  <span class="nt">"config"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"host"</span><span class="p">:</span> <span class="s2">"[MONGO_HOST]"</span><span class="p">,</span>
+    <span class="nt">"database"</span><span class="p">:</span> <span class="s2">"[DATABASE]"</span><span class="p">,</span>
+    <span class="nt">"user"</span><span class="p">:</span> <span class="s2">"[USER]"</span><span class="p">,</span>
+    <span class="nt">"pass"</span><span class="p">:</span> <span class="s2">"[PASSWORD]"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Replacing the <code>[VARIABLES]</code> with your Mongo connection information.</p>
+
+<p>3.) Create a user by running the following command:</p>
+
+<pre><code>node adduser.js [user@email.com] [password]
+</code></pre>
+
+<p>This will create a user based on the email address and password provided</p>
+
+<p>4.) Start the service:</p>
+
+<pre><code>npm run prod
+</code></pre>
+
+<h2>
+<a name="configuring-mail-service" class="anchor" href="#configuring-mail-service"><span class="octicon octicon-link"></span></a>Configuring Mail Service</h2>
+
+<p>Avow has the ability to send email notifications to users when a build fails. To
+enable this capability you must create a <code>mail_conf.json</code> file in the root:</p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"server"</span><span class="p">:</span> <span class="s2">"[AVOW_SERVER]"</span><span class="p">,</span>
+    <span class="nt">"host"</span><span class="p">:</span> <span class="s2">"[SMTP_SERVER]"</span><span class="p">,</span>
+    <span class="nt">"secureConnection"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">465</span><span class="p">,</span>
+    <span class="nt">"auth"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"user"</span><span class="p">:</span> <span class="s2">"[SMTP_EMAIL]"</span><span class="p">,</span>
+        <span class="nt">"pass"</span><span class="p">:</span> <span class="s2">"[SMTP_PASSWORD]"</span>
+    <span class="p">},</span>
+    <span class="nt">"maxConnections"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">"maxMessages"</span><span class="p">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><em>Note: the <code>AVOW_SERVER</code> refers to the FQDN/IP for your Avow instance. This is used
+to build return links from the outgoing email back to the failing build and should
+be formatted like: <code>http://yourserver.com:8181</code>.</em></p>
+
+<h2>
+<a name="accessing-the-web-app" class="anchor" href="#accessing-the-web-app"><span class="octicon octicon-link"></span></a>Accessing the Web App</h2>
+
+<p>The default port (which can be changed in <code>/config.js</code>) is <code>8181</code>, so when the
+server is running you can access the web app via <code>http://yourserver.com:8181</code>.</p>
+
+<p>You can then log in with the email address and password you created during installation.</p>
+
+<h2>
+<a name="configuring-projects" class="anchor" href="#configuring-projects"><span class="octicon octicon-link"></span></a>Configuring Projects</h2>
+
+<p>Projects utilize an <code>avow.json</code> file in their root directory to inform the build
+process of tasks to run. This file needs to be added to any project's repository
+which will be added to the system.</p>
+
+<p>A simple example of the <code>avow.json</code> file can be seen below:</p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"tasks"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"npm install"</span><span class="p">,</span>
+        <span class="s2">"grunt"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>The above would clone the repo and then run the tasks (in order) to complete the
+build.</p>
+
+<p>Once the project has an <code>avow.json</code> configuration it can be added to the system:</p>
+
+<p>From the main (Project List) screen you can click "New Project" to add a new
+project to the system. The "Project Config" screen will ask for 3 things:</p>
+
+<ol>
+<li>
+<strong>Name:</strong> This should consist of letters, numbers, and hyphens only and is used to reference the project</li>
+<li>
+<strong>Repo:</strong> The SSH repository clone URL</li>
+<li>
+<strong>Branch:</strong> If a valid SSH repo URL is supplied this will be a dropdown with the list of available branches</li>
+</ol><p>If the project is in a private repository you will need to add a deploy key. You
+can simply use the server's <code>.ssh/id_rsa.pub</code> key for this (if it exists) or
+<a href="https://help.github.com/articles/generating-ssh-keys">generate one</a>.</p>
+
+<p>Once you have a deploy key simply add it to the repository in GitHub under the
+Settings &gt;&gt; Deploy Keys.</p>
+
+<p>Alternatively, if you are running multiple repos (not just multiple branches) it
+may be easier to associate the server's pub-key with your Github account, or create
+a Github account for your server which has access to the repos you will be adding.</p>
+
+<h2>
+<a name="running-builds" class="anchor" href="#running-builds"><span class="octicon octicon-link"></span></a>Running Builds</h2>
+
+<p>There are two ways to run builds through Avow:</p>
+
+<h3>
+<a name="manual-run" class="anchor" href="#manual-run"><span class="octicon octicon-link"></span></a>Manual Run:</h3>
+
+<p>In the main "Project List" screen you can manually run a build by clicking the icon
+in the "Build" column. This will start the build then direct you to the build page
+where the build can be monitored.</p>
+
+<h3>
+<a name="github-webhook" class="anchor" href="#github-webhook"><span class="octicon octicon-link"></span></a>GitHub WebHook:</h3>
+
+<p>For the project to run whenever a commit is pushed to the repo + branch you can
+add a webhook in GitHub under the Project Settings &gt;&gt; Webhooks &amp; Services with the
+following settings:</p>
+
+<table>
+<thead><tr>
+<th><strong>Payload URL</strong></th>
+<th><strong>Payload Version</strong></th>
+</tr></thead>
+<tbody><tr>
+<td><code>http://yourserver.com:8181/api/build/</code></td>
+<td><code>application/vnd.github.v3+form</code></td>
+</tr></tbody>
+</table><p>Once these settings are in place the system will automatically process incoming
+webhook <code>POST</code>'s and execute a build.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This software is released as-is, without warranty under the MIT-Style license.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Avow-ci maintained by <a href="https://github.com/Fluidbyte">Fluidbyte</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-49700564-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
