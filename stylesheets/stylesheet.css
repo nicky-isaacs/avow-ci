@@ -59,9 +59,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 10px 0;
+  margin: 20px 0;
   font-weight: 700;
-  color:#222222;
+  color:#333;
   font-family: 'Open Sans', 'Calibri', Helvetica, Arial, sans-serif;
   letter-spacing: -1px;
 }
@@ -232,22 +232,33 @@ hr {
 }
 
 table {
-  border: 1px solid #373737;
-  margin-bottom: 20px;
-  text-align: left;
+  border-collapse: separate;
+  width: 100%;
+  margin: 15px 0;
+  border-spacing: 0;
+  border-radius: 4px;
  }
+
+th, td {
+   padding: 10px 15px;
+   border: 1px solid #ccc;
+   background: #fff;
+}
 
 th {
-  font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding: 10px;
-  background: #373737;
-  color: #fff;
- }
+   text-align: left;
+   background-color: #5C5C5C;
+   color: #fff;
+   border-color: #424242;
+}
 
-td {
-  padding: 10px;
-  border: 1px solid #373737;
- }
+tr:first-child th:first-child {
+    border-top-left-radius: 4px;
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 4px;
+}
 
 form {
   background: #f2f2f2;
@@ -275,7 +286,7 @@ Full-Width Styles
   top:0;
   right: 10px;
   z-index: 10;
-  padding: 13px 50px 10px 10px;
+  padding: 13px 50px 8px 10px;
   color: #fff;
   background: url('../images/blacktocat.png') #7D0200 no-repeat 95% 50%;
   font-weight: 700;
@@ -294,7 +305,7 @@ Full-Width Styles
 }
 
 #header_wrap .inner {
-  padding: 30px 10px 30px 10px;
+  padding: 20px 10px 20px 10px;
 }
 
 #project_title {
